@@ -42,40 +42,33 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         script: |
-          const releaseBody = `## 🚀 VibeTest ${{ github.ref_name }} Release
-          
-          ### What's New
-          - Automated release with comprehensive testing
-          - Cross-platform compatibility verified
-          - Security scanning completed
-          
-          ### Downloads
-          - **JAR File**: Available in release assets
-          - **Source Code**: Complete framework source
-          
-          ### Installation
-          \`\`\`bash
-          # Clone the repository
-          git clone https://github.com/krishnapollu/vibetest-java.git
-          cd vibetest-java
-          
-          # Checkout the release
-          git checkout ${{ github.ref_name }}
-          
-          # Run tests
-          mvn clean test
-          \`\`\`
-          
-          ### Framework Features
-          - ✅ Cross-platform Selenium TestNG automation
-          - ✅ Professional logging and reporting
-          - ✅ Custom @MyTest annotation
-          - ✅ ExtentReports integration
-          - ✅ Multiple browser support
-          - ✅ Page Object Model implementation
-          
-          ---
-          *Built with ❤️ using Cursor AI*`;
+          const releaseBody = '## 🚀 VibeTest ' + '${{ github.ref_name }}' + ' Release\n\n' +
+            '### What\'s New\n' +
+            '- Automated release with comprehensive testing\n' +
+            '- Cross-platform compatibility verified\n' +
+            '- Security scanning completed\n\n' +
+            '### Downloads\n' +
+            '- **JAR File**: Available in release assets\n' +
+            '- **Source Code**: Complete framework source\n\n' +
+            '### Installation\n' +
+            '```bash\n' +
+            '# Clone the repository\n' +
+            'git clone https://github.com/krishnapollu/vibetest-java.git\n' +
+            'cd vibetest-java\n\n' +
+            '# Checkout the release\n' +
+            'git checkout ${{ github.ref_name }}\n\n' +
+            '# Run tests\n' +
+            'mvn clean test\n' +
+            '```\n\n' +
+            '### Framework Features\n' +
+            '- ✅ Cross-platform Selenium TestNG automation\n' +
+            '- ✅ Professional logging and reporting\n' +
+            '- ✅ Custom @MyTest annotation\n' +
+            '- ✅ ExtentReports integration\n' +
+            '- ✅ Multiple browser support\n' +
+            '- ✅ Page Object Model implementation\n\n' +
+            '---\n' +
+            '*Built with ❤️ using Cursor AI*';
           
           const release = await github.rest.repos.createRelease({
             owner: context.repo.owner,
