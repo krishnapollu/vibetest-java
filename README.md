@@ -1,6 +1,6 @@
 # VibeTest - Selenium TestNG Automation Framework
 
-**Built 100% with Cursor and CursorAI (powered by OpenAI GPT-4)**
+**Built 100% with CursorAI (powered by OpenAI GPT-4)**
 
 ---
 
