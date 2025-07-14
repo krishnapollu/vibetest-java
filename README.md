@@ -7,7 +7,7 @@
 [![TestNG](https://img.shields.io/badge/TestNG-7.10.2-green.svg)](https://testng.org/)
 [![Selenium](https://img.shields.io/badge/Selenium-4.20.0-red.svg)](https://selenium.dev/)
 
-**Built 100% with Cursor and CursorAI (powered by OpenAI GPT-4)**
+**Built 100% with CursorAI (powered by OpenAI GPT-4)**
 
 ---
 
