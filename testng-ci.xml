@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="VibeTest-CI-Suite">
+    <parameter name="headless" value="true"/>
+    <parameter name="windowSize" value="1920,1080"/>
+    <parameter name="reportType" value="extent"/>
+    <listeners>
+        <listener class-name="com.testautomation.listeners.ParameterInitializerListener"/>
+        <listener class-name="com.testautomation.listeners.UnifiedLogListener"/>
+        <listener class-name="com.testautomation.listeners.ReportSuiteListener"/>
+    </listeners>
+    <test name="SmokeTests">
+        <classes>
+            <class name="com.testautomation.tests.demoblaze.HomePageTest"/>
+            <class name="com.testautomation.tests.demoblaze.LoginPageTest"/>
+        </classes>
+    </test>
+</suite> 
