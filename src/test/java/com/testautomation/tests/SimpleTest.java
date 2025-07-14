@@ -1,37 +1,31 @@
 package com.testautomation.tests;
 
-import com.testautomation.core.LoggerUtil;
-import com.testautomation.core.MyTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class SimpleTest {
     
-    @MyTest(
-        testCaseId = "SIMPLE-001",
-        description = "Simple test to verify framework setup",
-        author = "CI System",
-        tags = {"smoke", "simple"}
-    )
     @Test
     public void testFrameworkSetup() {
-        LoggerUtil.info("Running simple framework test");
+        System.out.println("Running simple framework test");
         Assert.assertTrue(true, "Framework should be working");
-        LoggerUtil.info("Simple test completed successfully");
+        System.out.println("Simple test completed successfully");
     }
     
-    @MyTest(
-        testCaseId = "SIMPLE-002",
-        description = "Test basic assertion",
-        author = "CI System",
-        tags = {"smoke", "simple"}
-    )
     @Test
     public void testBasicAssertion() {
-        LoggerUtil.info("Testing basic assertion");
+        System.out.println("Testing basic assertion");
         String expected = "Hello";
         String actual = "Hello";
         Assert.assertEquals(actual, expected, "Strings should match");
-        LoggerUtil.info("Basic assertion test completed");
+        System.out.println("Basic assertion test completed");
+    }
+    
+    @Test
+    public void testMathOperation() {
+        System.out.println("Testing math operation");
+        int result = 2 + 2;
+        Assert.assertEquals(result, 4, "2 + 2 should equal 4");
+        System.out.println("Math test completed successfully");
     }
 } 

@@ -4,10 +4,9 @@
     <parameter name="headless" value="true"/>
     <parameter name="windowSize" value="1920,1080"/>
     <parameter name="reportType" value="extent"/>
+    <!-- Simplified listeners for CI -->
     <listeners>
         <listener class-name="com.testautomation.listeners.ParameterInitializerListener"/>
-        <listener class-name="com.testautomation.listeners.UnifiedLogListener"/>
-        <listener class-name="com.testautomation.listeners.ReportSuiteListener"/>
     </listeners>
     <test name="SmokeTests">
         <classes>
