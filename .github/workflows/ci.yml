@@ -38,15 +38,15 @@ jobs:
         
     - name: Setup Chrome
       if: matrix.browser == 'chrome'
-      uses: nanasess/setup-chromedriver@v2
-      
+      uses: browser-actions/setup-chrome@v1
+
     - name: Setup Firefox
       if: matrix.browser == 'firefox'
-      uses: nanasess/setup-geckodriver@v2
-      
+      uses: browser-actions/setup-firefox@v1
+
     - name: Setup Edge
       if: matrix.browser == 'edge'
-      uses: nanasess/setup-edgedriver@v2
+      uses: browser-actions/setup-edge@v1
       
     - name: Run Tests
       env:
