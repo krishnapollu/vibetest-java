@@ -235,45 +235,43 @@ jobs:
         echo "---" >> reports/README.md
         echo "*Generated automatically by VibeTest CI/CD Pipeline*" >> reports/README.md
         
-        # Create a simple index.html for better presentation
-        cat > reports/index.html << 'EOF'
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VibeTest Reports</title>
-    <style>
-        body { font-family: Arial, sans-serif; margin: 40px; }
-        .header { background: #f0f0f0; padding: 20px; border-radius: 5px; }
-        .content { margin: 20px 0; }
-        .footer { color: #666; font-size: 0.9em; }
-    </style>
-</head>
-<body>
-    <div class="header">
-        <h1>🚀 VibeTest Reports</h1>
-        <p>Test automation results and reports</p>
-    </div>
-    <div class="content">
-        <h2>Available Reports</h2>
-        <ul>
-            <li><a href="README.md">Test Summary (Markdown)</a></li>
-        </ul>
-        <h2>Framework Information</h2>
-        <ul>
-            <li><strong>Framework:</strong> VibeTest Selenium TestNG</li>
-            <li><strong>Version:</strong> 1.0-SNAPSHOT</li>
-            <li><strong>Build Date:</strong> $(date)</li>
-            <li><strong>CI/CD:</strong> GitHub Actions</li>
-        </ul>
-    </div>
-    <div class="footer">
-        Generated automatically by VibeTest CI/CD Pipeline
-    </div>
-</body>
-</html>
-EOF
+                # Create a simple index.html for better presentation
+        echo '<!DOCTYPE html>' > reports/index.html
+        echo '<html lang="en">' >> reports/index.html
+        echo '<head>' >> reports/index.html
+        echo '    <meta charset="UTF-8">' >> reports/index.html
+        echo '    <meta name="viewport" content="width=device-width, initial-scale=1.0">' >> reports/index.html
+        echo '    <title>VibeTest Reports</title>' >> reports/index.html
+        echo '    <style>' >> reports/index.html
+        echo '        body { font-family: Arial, sans-serif; margin: 40px; }' >> reports/index.html
+        echo '        .header { background: #f0f0f0; padding: 20px; border-radius: 5px; }' >> reports/index.html
+        echo '        .content { margin: 20px 0; }' >> reports/index.html
+        echo '        .footer { color: #666; font-size: 0.9em; }' >> reports/index.html
+        echo '    </style>' >> reports/index.html
+        echo '</head>' >> reports/index.html
+        echo '<body>' >> reports/index.html
+        echo '    <div class="header">' >> reports/index.html
+        echo '        <h1>🚀 VibeTest Reports</h1>' >> reports/index.html
+        echo '        <p>Test automation results and reports</p>' >> reports/index.html
+        echo '    </div>' >> reports/index.html
+        echo '    <div class="content">' >> reports/index.html
+        echo '        <h2>Available Reports</h2>' >> reports/index.html
+        echo '        <ul>' >> reports/index.html
+        echo '            <li><a href="README.md">Test Summary (Markdown)</a></li>' >> reports/index.html
+        echo '        </ul>' >> reports/index.html
+        echo '        <h2>Framework Information</h2>' >> reports/index.html
+        echo '        <ul>' >> reports/index.html
+        echo '            <li><strong>Framework:</strong> VibeTest Selenium TestNG</li>' >> reports/index.html
+        echo '            <li><strong>Version:</strong> 1.0-SNAPSHOT</li>' >> reports/index.html
+        echo '            <li><strong>Build Date:</strong> $(date)</li>' >> reports/index.html
+        echo '            <li><strong>CI/CD:</strong> GitHub Actions</li>' >> reports/index.html
+        echo '        </ul>' >> reports/index.html
+        echo '    </div>' >> reports/index.html
+        echo '    <div class="footer">' >> reports/index.html
+        echo '        Generated automatically by VibeTest CI/CD Pipeline' >> reports/index.html
+        echo '    </div>' >> reports/index.html
+        echo '</body>' >> reports/index.html
+        echo '</html>' >> reports/index.html
         
         echo "Reports generated successfully"
         echo "Reports directory contents:"
