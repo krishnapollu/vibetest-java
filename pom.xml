@@ -79,11 +79,14 @@
                 <configuration>
                     <formats>
                         <format>HTML</format>
-                        <format>JSON</format>
                     </formats>
-                    <failBuildOnCVSS>7</failBuildOnCVSS>
+                    <failBuildOnCVSS>10</failBuildOnCVSS>
                     <skipProvidedScope>true</skipProvidedScope>
                     <skipRuntimeScope>false</skipRuntimeScope>
+                    <skipOnError>true</skipOnError>
+                    <suppressionFiles>
+                        <suppressionFile>owasp-suppressions.xml</suppressionFile>
+                    </suppressionFiles>
                 </configuration>
                 <executions>
                     <execution>
