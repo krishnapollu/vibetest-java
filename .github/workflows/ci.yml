@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ main, develop ]
 
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
 jobs:
   test:
     name: Test on ${{ matrix.os }} with ${{ matrix.browser }}
@@ -198,6 +203,14 @@ jobs:
       with:
         path: test-results/
         
+    - name: Check permissions
+      run: |
+        echo "Checking GitHub token permissions..."
+        echo "GITHUB_TOKEN available: ${{ secrets.GITHUB_TOKEN != '' }}"
+        echo "Repository: ${{ github.repository }}"
+        echo "Ref: ${{ github.ref }}"
+        echo "Actor: ${{ github.actor }}"
+        
     - name: Generate consolidated report
       run: |
         mkdir -p reports
@@ -205,7 +218,66 @@ jobs:
         echo "Generated on: $(date)" >> reports/README.md
         echo "" >> reports/README.md
         echo "## Test Summary" >> reports/README.md
-        find test-results -name "*.html" -exec echo "- [{}]({})" \; >> reports/README.md
+        echo "" >> reports/README.md
+        echo "### Available Reports" >> reports/README.md
+        if [ -d "test-results" ]; then
+          find test-results -name "*.html" -exec echo "- [{}]({})" \; >> reports/README.md || echo "- No HTML reports found" >> reports/README.md
+        else
+          echo "- No test results directory found" >> reports/README.md
+        fi
+        echo "" >> reports/README.md
+        echo "### Framework Information" >> reports/README.md
+        echo "- **Framework**: VibeTest Selenium TestNG" >> reports/README.md
+        echo "- **Version**: 1.0-SNAPSHOT" >> reports/README.md
+        echo "- **Build Date**: $(date)" >> reports/README.md
+        echo "- **CI/CD**: GitHub Actions" >> reports/README.md
+        echo "" >> reports/README.md
+        echo "---" >> reports/README.md
+        echo "*Generated automatically by VibeTest CI/CD Pipeline*" >> reports/README.md
+        
+        # Create a simple index.html for better presentation
+        cat > reports/index.html << 'EOF'
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeTest Reports</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .header { background: #f0f0f0; padding: 20px; border-radius: 5px; }
+        .content { margin: 20px 0; }
+        .footer { color: #666; font-size: 0.9em; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🚀 VibeTest Reports</h1>
+        <p>Test automation results and reports</p>
+    </div>
+    <div class="content">
+        <h2>Available Reports</h2>
+        <ul>
+            <li><a href="README.md">Test Summary (Markdown)</a></li>
+        </ul>
+        <h2>Framework Information</h2>
+        <ul>
+            <li><strong>Framework:</strong> VibeTest Selenium TestNG</li>
+            <li><strong>Version:</strong> 1.0-SNAPSHOT</li>
+            <li><strong>Build Date:</strong> $(date)</li>
+            <li><strong>CI/CD:</strong> GitHub Actions</li>
+        </ul>
+    </div>
+    <div class="footer">
+        Generated automatically by VibeTest CI/CD Pipeline
+    </div>
+</body>
+</html>
+EOF
+        
+        echo "Reports generated successfully"
+        echo "Reports directory contents:"
+        ls -la reports/
         
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
@@ -213,4 +285,8 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./reports
-        publish_branch: gh-pages 
+        publish_branch: gh-pages
+        force_orphan: true
+        user_name: 'github-actions[bot]'
+        user_email: 'github-actions[bot]@users.noreply.github.com'
+        commit_message: 'Deploy VibeTest reports - $(date)' 
