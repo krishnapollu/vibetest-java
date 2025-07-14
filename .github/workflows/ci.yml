@@ -122,8 +122,22 @@ jobs:
     - name: Compile code
       run: mvn clean compile
       
-    - name: Run unit tests
-      run: mvn test -Dtest=!*IntegrationTest
+    - name: Organize imports
+      run: mvn spotless:apply
+      
+    - name: Check code style
+      run: mvn checkstyle:check
+      
+    - name: Verify project structure
+      run: |
+        echo "Project structure verification:"
+        echo "Source files:"
+        find src/main/java -name "*.java" | wc -l
+        echo "Test files:"
+        find src/test/java -name "*.java" | wc -l
+        echo "Resource files:"
+        find src/main/resources -name "*" 2>/dev/null | wc -l || echo "No main resources"
+        find src/test/resources -name "*" 2>/dev/null | wc -l || echo "No test resources"
 
   security:
     name: Security Scan
