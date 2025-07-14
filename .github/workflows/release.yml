@@ -128,14 +128,12 @@ jobs:
           if (fs.existsSync(reportsDir)) {
             // Create a simple text file with test summary instead of zip
             const summaryPath = './target/test-summary.txt';
-            const summary = `VibeTest ${{ github.ref_name }} - Test Summary
-Generated: ${new Date().toISOString()}
-Framework: VibeTest Selenium TestNG
-Tests: Simple framework validation tests
-Status: Completed successfully
-
-For detailed reports, please run: mvn clean test
-            `;
+            const summary = 'VibeTest ' + '${{ github.ref_name }}' + ' - Test Summary\n' +
+              'Generated: ' + new Date().toISOString() + '\n' +
+              'Framework: VibeTest Selenium TestNG\n' +
+              'Tests: Simple framework validation tests\n' +
+              'Status: Completed successfully\n\n' +
+              'For detailed reports, please run: mvn clean test\n';
             
             fs.writeFileSync(summaryPath, summary);
             
