@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeTest - Selenium TestNG Automation Framework</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .feature-card h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+        }
+        .badges {
+            text-align: center;
+            margin: 20px 0;
+        }
+        .badge {
+            display: inline-block;
+            margin: 5px;
+            padding: 8px 16px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        .badge:hover {
+            background: #5a6fd8;
+        }
+        .cta {
+            text-align: center;
+            margin: 40px 0;
+        }
+        .cta a {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        .cta a:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 VibeTest</h1>
+            <p>Selenium TestNG Automation Framework</p>
+            <p><em>Built 100% with Cursor and CursorAI</em></p>
+        </div>
+        
+        <div class="content">
+            <h2>Welcome to VibeTest</h2>
+            <p>VibeTest is a professional, cross-platform Selenium TestNG automation framework designed for modern web application testing. Built with best practices, advanced logging, comprehensive reporting, and AI-assisted development.</p>
+            
+            <div class="badges">
+                <a href="https://github.com/krishnapollu/vibetest-java/actions" class="badge">CI/CD Pipeline</a>
+                <a href="https://github.com/krishnapollu/vibetest-java/actions" class="badge">PR Validation</a>
+                <a href="https://openjdk.java.net/projects/jdk/17/" class="badge">Java 17</a>
+                <a href="https://maven.apache.org/" class="badge">Maven 3.6+</a>
+                <a href="https://testng.org/" class="badge">TestNG 7.10.2</a>
+                <a href="https://selenium.dev/" class="badge">Selenium 4.20.0</a>
+            </div>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3>🌐 Cross-Platform</h3>
+                    <p>Runs seamlessly on Windows, macOS, and Linux with full browser compatibility.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📊 Advanced Reporting</h3>
+                    <p>Professional ExtentReports integration with step-level screenshots and detailed analytics.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🔧 Custom Annotations</h3>
+                    <p>@MyTest annotation for comprehensive test metadata and traceability.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🚀 CI/CD Ready</h3>
+                    <p>GitHub Actions workflows for automated testing, validation, and deployment.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>📝 Professional Logging</h3>
+                    <p>Thread-safe step logging with optional screenshots and detailed execution traces.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🛡️ Security Scanning</h3>
+                    <p>OWASP dependency check integration for vulnerability scanning and security compliance.</p>
+                </div>
+            </div>
+            
+            <div class="cta">
+                <a href="https://github.com/krishnapollu/vibetest-java">View on GitHub</a>
+            </div>
+            
+            <h3>Quick Start</h3>
+            <pre><code># Clone the repository
+git clone https://github.com/krishnapollu/vibetest-java.git
+cd vibetest-java
+
+# Run tests
+mvn clean test
+
+# View reports
+open target/extent-reports/index.html</code></pre>
+        </div>
+        
+        <div class="footer">
+            <p>Built with ❤️ using Cursor AI | Powered by OpenAI GPT-4</p>
+        </div>
+    </div>
+</body>
+</html> 

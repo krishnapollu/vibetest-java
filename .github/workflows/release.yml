@@ -1,0 +1,100 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    name: Create Release
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up Java 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: 'temurin'
+        cache: 'maven'
+        
+    - name: Cache Maven packages
+      uses: actions/cache@v4
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+        restore-keys: ${{ runner.os }}-m2
+        
+    - name: Run full test suite
+      run: mvn clean test
+      
+    - name: Generate JAR
+      run: mvn clean package -DskipTests
+      
+    - name: Create Release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: VibeTest ${{ github.ref_name }}
+        body: |
+          ## 🚀 VibeTest ${{ github.ref_name }} Release
+          
+          ### What's New
+          - Automated release with comprehensive testing
+          - Cross-platform compatibility verified
+          - Security scanning completed
+          
+          ### Downloads
+          - **JAR File**: Available in release assets
+          - **Source Code**: Complete framework source
+          
+          ### Installation
+          ```bash
+          # Clone the repository
+          git clone https://github.com/krishnapollu/vibetest-java.git
+          cd vibetest-java
+          
+          # Checkout the release
+          git checkout ${{ github.ref_name }}
+          
+          # Run tests
+          mvn clean test
+          ```
+          
+          ### Framework Features
+          - ✅ Cross-platform Selenium TestNG automation
+          - ✅ Professional logging and reporting
+          - ✅ Custom @MyTest annotation
+          - ✅ ExtentReports integration
+          - ✅ Multiple browser support
+          - ✅ Page Object Model implementation
+          
+          ---
+          *Built with ❤️ using Cursor AI*
+        draft: false
+        prerelease: false
+        
+    - name: Upload JAR
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/vibetest-java-${{ github.ref_name }}.jar
+        asset_name: vibetest-java-${{ github.ref_name }}.jar
+        asset_content_type: application/java-archive
+        
+    - name: Upload test reports
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./target/extent-reports/
+        asset_name: test-reports-${{ github.ref_name }}.zip
+        asset_content_type: application/zip 

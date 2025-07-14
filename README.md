@@ -1,5 +1,12 @@
 # VibeTest - Selenium TestNG Automation Framework
 
+[![CI/CD Pipeline](https://github.com/krishnapollu/vibetest-java/workflows/VibeTest%20CI%2FCD%20Pipeline/badge.svg)](https://github.com/krishnapollu/vibetest-java/actions)
+[![PR Validation](https://github.com/krishnapollu/vibetest-java/workflows/Pull%20Request%20Validation/badge.svg)](https://github.com/krishnapollu/vibetest-java/actions)
+[![Java](https://img.shields.io/badge/Java-17-orange.svg)](https://openjdk.java.net/projects/jdk/17/)
+[![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
+[![TestNG](https://img.shields.io/badge/TestNG-7.10.2-green.svg)](https://testng.org/)
+[![Selenium](https://img.shields.io/badge/Selenium-4.20.0-red.svg)](https://selenium.dev/)
+
 **Built 100% with Cursor and CursorAI (powered by OpenAI GPT-4)**
 
 ---
@@ -174,6 +181,31 @@ LoggerUtil.info("Step: Enter search term || screenshot: search_entered.png");
 - Automatic screenshots on test failure
 - On-demand screenshots with step logging
 - Cross-platform path handling for reliable display
+
+## 🚀 CI/CD Pipeline
+
+VibeTest includes comprehensive GitHub Actions workflows for automated testing and deployment:
+
+### Workflows
+
+- **🔄 CI/CD Pipeline**: Runs tests on multiple platforms (Ubuntu, Windows, macOS) with different browsers (Chrome, Firefox, Edge)
+- **✅ PR Validation**: Validates pull requests with code quality checks and automated commenting
+- **🔒 Security Scan**: OWASP dependency check for vulnerability scanning
+- **📊 Report Generation**: Automated report generation and GitHub Pages deployment
+- **🏷️ Release Management**: Automated releases when tags are pushed
+
+### Pipeline Features
+
+- **Cross-platform testing** on Ubuntu, Windows, and macOS
+- **Multi-browser support** with Chrome, Firefox, and Edge
+- **Code quality checks** including Checkstyle and import organization
+- **Security scanning** with OWASP dependency check
+- **Artifact management** for test results and reports
+- **Automated reporting** with GitHub Pages integration
+
+### View Pipeline Status
+
+Visit the [Actions tab](https://github.com/krishnapollu/vibetest-java/actions) to see real-time pipeline status and detailed logs.
 
 ## 🏃‍♂️ Running Tests
 
