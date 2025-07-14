@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="SeleniumTestNGSuite">
+    <parameter name="browser" value="chrome"/>
+    <parameter name="url" value="https://demoblaze.com"/>
+    <parameter name="headless" value="false"/>
+    <parameter name="windowSize" value="1920,1080"/>
+    <parameter name="reportType" value="extent,allure"/>
+    <listeners>
+        <listener class-name="com.testautomation.listeners.ParameterInitializerListener"/>
+        <listener class-name="com.testautomation.listeners.UnifiedLogListener"/>
+        <listener class-name="com.testautomation.listeners.ReportSuiteListener"/>
+    </listeners>
+    <test name="AllApplicationTests">
+        <classes>
+            <class name="com.testautomation.tests.demoblaze.CartPageTest"/>
+            <class name="com.testautomation.tests.demoblaze.HomePageTest"/>
+            <class name="com.testautomation.tests.demoblaze.LoginPageTest"/>
+            <class name="com.testautomation.tests.demoblaze.SignUpPageTest"/>
+            <class name="com.testautomation.tests.demoblaze.ContactPageTest"/>
+            <class name="com.testautomation.tests.demoblaze.ProductPageTest"/>
+            <!-- <class name="com.testautomation.tests.google.GoogleSearchTest"/> -->
+        </classes>
+    </test>
+</suite> 
