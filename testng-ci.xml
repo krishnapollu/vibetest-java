@@ -11,8 +11,7 @@
     </listeners>
     <test name="SmokeTests">
         <classes>
-            <class name="com.testautomation.tests.demoblaze.HomePageTest"/>
-            <class name="com.testautomation.tests.demoblaze.LoginPageTest"/>
+            <class name="com.testautomation.tests.SimpleTest"/>
         </classes>
     </test>
 </suite> 

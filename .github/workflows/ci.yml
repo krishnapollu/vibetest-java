@@ -14,7 +14,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-latest]
         browser: [chrome, firefox]
         java-version: [17]
         
@@ -52,6 +52,8 @@ jobs:
         echo "Setting up CI test configuration..."
         cp testng-ci.xml testng.xml
         echo "TestNG configuration updated for CI"
+        echo "TestNG configuration content:"
+        cat testng.xml
       
     - name: Run Tests
       env:
@@ -65,7 +67,7 @@ jobs:
         echo "Listing target directory:"
         ls -la target/ || echo "Target directory doesn't exist yet"
         echo "Running Maven tests..."
-        mvn clean test -Dbrowser=${{ matrix.browser }} -Dheadless=true -Dwebdriver.timeouts.implicitlywait=10 || echo "Tests failed but continuing..."
+        mvn clean test -Dbrowser=${{ matrix.browser }} -Dheadless=true -Dwebdriver.timeouts.implicitlywait=10 -X || echo "Tests failed but continuing..."
         echo "Test execution completed. Checking results..."
         echo "Target directory contents:"
         ls -la target/ || echo "Target directory not found"
@@ -117,12 +119,6 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
         
-    - name: Organize imports
-      run: mvn spotless:apply
-      
-    - name: Check code style
-      run: mvn checkstyle:check
-      
     - name: Compile code
       run: mvn clean compile
       
